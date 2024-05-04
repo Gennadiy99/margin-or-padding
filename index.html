@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Margin and Padding</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>5.5 margin или padding, Что лучше использовать</h1>
+      <p>
+        <b
+          >В этом уроке я расскажу, где лучше использовать margin, а где
+          padding.</b
+        >
+        В каких ситуациях и как лучше использовать эти два свойства margin и
+        padding для создания отступов. Организация отступов margin и padding
+        очень важна и на первых этапах может возникать вопрос, что же лучше
+        использовать margin или padding в той или иной ситуации. В этом уроке я
+        расскажу о нескольких простых правилах, которые помогут вам в
+        организации отступов с помощью margin и padding.
+      </p>
+      <p>
+        <b>Для разделения элементов</b> Друг от Друга нужно использовать
+        <b>"margin"</b>.
+        <u
+          >Отступы всегда идут от предыдущего к следующему. Так работают отступы
+          для элементов</u
+        >
+      </p>
+      <p>
+        <b>В текстовых тегах</b> имеются по умолчанию <b>"margin"</b> поэтому
+        часто в стилях CSS пишут сброс для свех тегов:
+      </p>
+      <pre>
+        * {
+          margin: 0;
+          padding: 0;
+        }
+      </pre>
+      <p>
+        Для того <b>что бы отодвинуть Текст</b> сверху и с лева используют
+        <b>"padding"</b>
+      </p>
+      <pre>
+        h1 {
+          padding-top: 15px;
+          padding-left: 15px;
+        }
+      </pre>
+      <p>
+        <b>"margin"</b> -
+        <u>Нужно задавать Соседним элементам, а не дочерним.</u>
+      </p>
+
+      <p>
+        <b>Если планируется</b> использовать <b>класс: "list"</b> в другом месте
+        кода но <b>без отступов "margin"</b> то
+        <u>нужно создать другой класс <b>" mr5"</b></u> в котором описать
+        отступы, и не прописывать их в класс: "list"
+      </p>
+      <p>
+        <u>Еще можно создать див обертку</u> с классом <b>".mr5"</b> И тогда не
+        нужно указывать 2 класса "list mr5" Обертка будет устанавливать отступы.
+      </p>
+      <p>
+        <b>Отступы для последнего элемента в группе нужно обнулять!</b>
+      </p>
+      <pre>
+        .menu li:last-child{
+          margin-right: 0;
+        }
+      </pre>
+      <p>
+        <b>Отступ между</b> элементами "li" и картинкой нужно задавать не через
+        дочерние а <b>через родительские элементы.</b> То есть <b>"margin"</b>
+        <b>указывать для блока <u>"menu"</u></b> в котором находятся "li"
+      </p>
+      <p>
+        Есть интереная фишка записи отступов, где отступы "margin" указываются
+        соседним элементам ".mr5":
+      </p>
+      <pre>
+        .mr5 + .mr5{
+          margin-top: 15px;
+        }
+      </pre>
+      <p>
+        Выше указанная запись заменяет запись где каждому
+        <u>".mr5"</u> устанавливали верхний отступ
+        <u>"margin-bottom: 15px";</u> а топотом последнему
+        <u>".mr5:last-child"</u> элементу отменяли отступ
+        <u>"margin-bottom: 0;"</u>:
+      </p>
+      <pre>
+        .mr5 {
+          margin-bottom: 15px;
+        } 
+        .mr5:last-child{
+          margin-bottom: 0;
+        }
+      </pre>
+
+      <!-- Пример работы "margin" / "padding" -->
+      <div class="container">
+        <div class="item">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+          laboriosam suscipit nam, asperiores voluptates placeat.
+        </div>
+        <div class="item">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla
+          debitis possimus beatae, quas repudiandae dignissimos!
+        </div>
+        <div class="item">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla
+          debitis possimus beatae, quas repudiandae dignissimos!
+        </div>
+      </div>
+      <h1>Lorem ipsum dolor sit amet.</h1>
+      <div class="mr-b15">
+        <div class="container2">
+          <div class="list mr5">
+            <div>
+              <ul>
+                <li>Lorem, ipsum.</li>
+                <li>Lorem, ipsum.</li>
+                <li>Lorem, ipsum.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="list mr5">
+            <div>
+              <ul>
+                <li>Lorem, ipsum.</li>
+                <li>Lorem, ipsum.</li>
+                <li>Lorem, ipsum.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="list mr5">
+            <div>
+              <ul>
+                <li>Lorem, ipsum.</li>
+                <li>Lorem, ipsum.</li>
+                <li>Lorem, ipsum.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="menu">
+        <li><a href="#">link1</a></li>
+        <li><a href="#">link2</a></li>
+        <li><a href="#">link3</a></li>
+        <li><a href="#">link4</a></li>
+      </ul>
+      <img src="1.jpg" alt="картинка" />
+    </div>
+  </body>
+</html>
